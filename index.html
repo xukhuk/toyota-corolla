@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Toyota Corolla — История, Поколения и Характеристики</title>
+    <style>
+        :root {
+            --primary: #eb0a1e;
+            --primary-dark: #b80514;
+            --bg-dark: #0f1115;
+            --card-bg: #181b22;
+            --card-border: #262b35;
+            --text-main: #f0f3f8;
+            --text-muted: #9ba3af;
+            --accent-glow: rgba(235, 10, 30, 0.25);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        /* Навигация */
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: rgba(15, 17, 21, 0.9);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--card-border);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .logo span {
+            color: var(--primary);
+        }
+
+        nav a {
+            color: var(--text-muted);
+            text-decoration: none;
+            margin-left: 1.5rem;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        nav a:hover {
+            color: var(--text-main);
+        }
+
+        /* Hero секция */
+        .hero {
+            position: relative;
+            padding: 6rem 2rem 5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .badge {
+            display: inline-block;
+            background: var(--accent-glow);
+            color: #ff4d5a;
+            border: 1px solid rgba(235, 10, 30, 0.4);
+            padding: 0.35rem 0.9rem;
+            border-radius: 999px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero h1 {
+            font-size: 3.4rem;
+            line-height: 1.15;
+            font-weight: 800;
+            margin-bottom: 1.2rem;
+        }
+
+        .hero h1 span {
+            background: linear-gradient(90deg, #ffffff, var(--primary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            font-size: 1.15rem;
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .btn {
+            padding: 0.85rem 1.75rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.25s ease;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+            box-shadow: 0 4px 20px var(--accent-glow);
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background: var(--card-bg);
+            color: var(--text-main);
+            border: 1px solid var(--card-border);
+        }
+
+        .btn-secondary:hover {
+            border-color: #3e4657;
+            background: #20242e;
+        }
+
+        /* Статистика в карточке */
+        .stat-card {
+            background: linear-gradient(145deg, #181b22, #11141a);
+            border: 1px solid var(--card-border);
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        .stat-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        .stat-item h3 {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 0.2rem;
+        }
+
+        .stat-item p {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        /* Общие секции */
+        section {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3.5rem;
+        }
+
+        .section-header h2 {
+            font-size: 2.3rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .section-header p {
+            color: var(--text-muted);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Карточки поколений */
+        .grid-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 12px;
+            padding: 1.75rem;
+            transition: transform 0.2s, border-color 0.2s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: #3b4252;
+        }
+
+        .card-tag {
+            color: var(--primary);
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+        }
+
+        .card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .card p {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+        }
+
+        /* Преимущества */
+        .features {
+            background: #14171d;
+            border-radius: 20px;
+            padding: 3rem;
+            border: 1px solid var(--card-border);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .feature-box h4 {
+            font-size: 1.15rem;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .feature-box h4::before {
+            content: "✓";
+            color: var(--primary);
+            font-weight: bold;
+        }
+
+        .feature-box p {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        /* Таблица характеристик */
+        .specs-table-wrapper {
+            overflow-x: auto;
+            border: 1px solid var(--card-border);
+            border-radius: 12px;
+            background: var(--card-bg);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+        }
+
+        th, td {
+            padding: 1rem 1.25rem;
+            border-bottom: 1px solid var(--card-border);
+        }
+
+        th {
+            background: #12141a;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        /* Подвал */
+        footer {
+            border-top: 1px solid var(--card-border);
+            padding: 2.5rem 2rem;
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* Адаптивность */
+        @media (max-width: 868px) {
+            .hero {
+                grid-template-columns: 1fr;
+                padding-top: 3rem;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            nav {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Навигация -->
+    <header>
+        <div class="nav-container">
+            <div class="logo">TOYOTA <span>COROLLA</span></div>
+            <nav>
+                <a href="#about">О модели</a>
+                <a href="#history">Поколения</a>
+                <a href="#specs">Характеристики</a>
+                <a href="#advantages">Преимущества</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Главный баннер -->
+    <div class="hero" id="about">
+        <div>
+            <div class="badge">Мировой рекордсмен продаж</div>
+            <h1>Легенда надежности — <span>Toyota Corolla</span></h1>
+            <p>
+                Автомобиль, изменивший представление об универсальном транспорте на каждый день. Более полувека истории, признание во всем мире и непревзойденное качество сборки.
+            </p>
+            <div class="btn-group">
+                <a href="#history" class="btn btn-primary">Изучить историю</a>
+                <a href="#specs" class="btn btn-secondary">Характеристики</a>
+            </div>
+        </div>
+
+        <div class="stat-card">
+            <h2 style="font-size: 1.4rem; margin-bottom: 1.5rem;">Ключевые факты</h2>
+            <div class="stat-grid">
+                <div class="stat-item">
+                    <h3>> 50 млн</h3>
+                    <p>Проданных экземпляров по всему миру</p>
+                </div>
+                <div class="stat-item">
+                    <h3>1966 г.</h3>
+                    <p>Год запуска первого поколения (E10)</p>
+                </div>
+                <div class="stat-item">
+                    <h3>12</h3>
+                    <p>Сменившихся поколений модели</p>
+                </div>
+                <div class="stat-item">
+                    <h3>#1</h3>
+                    <p>В Книге рекордов Гиннесса по продажам</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- История и знаковые поколения -->
+    <section id="history">
+        <div class="section-header">
+            <h2>Знаковые поколения</h2>
+            <p>Как эволюционировал самый продаваемый автомобиль в истории автопрома</p>
+        </div>
+
+        <div class="grid-cards">
+            <div class="card">
+                <div class="card-tag">1966 — 1970</div>
+                <h3>1-е поколение (E10)</h3>
+                <p>
+                    Компактный семейный седан с мотором 1.1 л (60 л.с.), рычагом передач на полу и независимой передней подвеской. Стал хитом в Японии и начал экспорт в США.
+                </p>
+            </div>
+
+            <div class="card">
+                <div class="card-tag">1983 — 1987</div>
+                <h3>5-е поколение (E80 / AE86)</h3>
+                <p>
+                    Массовый переход на передний привод. Легендарная заднеприводная версия Corolla Levin (AE86) стала иконой дрифта и автокультуры по всему миру.
+                </p>
+            </div>
+
+            <div class="card">
+                <div class="card-tag">2000 — 2006</div>
+                <h3>9-е поколение (E120)</h3>
+                <p>
+                    Одна из самых популярных моделей на просторах СНГ. Эталон неубиваемости, моторы 1.4, 1.6 л с системой VVT-i и высокая антикоррозийная стойкость.
+                </p>
+            </div>
+
+            <div class="card">
+                <div class="card-tag">2018 — н.в.</div>
+                <h3>12-е поколение (E210)</h3>
+                <p>
+                    Построена на глобальной модульной платформе TNGA (GA-C). Независимая многорычажная подвеска, современные гибридные силовые установки и комплекс Toyota Safety Sense.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Технические характеристики (12 поколение) -->
+    <section id="specs">
+        <div class="section-header">
+            <h2>Технические характеристики (12-е поколение)</h2>
+            <p>Базовые параметры современного седана Toyota Corolla</p>
+        </div>
+
+        <div class="specs-table-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Параметр</th>
+                        <th>Бензин 1.6 (1ZR-FE / 1NR)</th>
+                        <th>Гибрид 1.8 Hybrid (2ZR-FXE)</th>
+                        <th>Dynamic Force 2.0</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Мощность</strong></td>
+                        <td>122 л.с.</td>
+                        <td>122 л.с. (суммарно)</td>
+                        <td>171 л.с.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Трансмиссия</strong></td>
+                        <td>6-МКПП / Вариатор (CVT)</td>
+                        <td>Электромеханический e-CVT</td>
+                        <td>Вариатор Direct Shift-CVT</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Расход топлива (смешанный)</strong></td>
+                        <td>6.3 — 6.6 л / 100 км</td>
+                        <td>3.9 — 4.4 л / 100 км</td>
+                        <td>5.8 — 6.1 л / 100 км</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Разгон 0-100 км/ч</strong></td>
+                        <td>~ 10.8 — 11.0 сек</td>
+                        <td>~ 10.9 сек</td>
+                        <td>~ 8.2 сек</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Объем багажника</strong></td>
+                        <td>470 литров</td>
+                        <td>471 литр</td>
+                        <td>470 литров</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Привод</strong></td>
+                        <td>Передний (FWD)</td>
+                        <td>Передний (FWD) / e-Four</td>
+                        <td>Передний (FWD)</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- Преимущества -->
+    <section id="advantages">
+        <div class="features">
+            <div class="section-header" style="margin-bottom: 2rem;">
+                <h2>Почему выбирают Corolla?</h2>
+                <p>Секрет успеха модели, проверенный десятилетиями эксплуатации</p>
+            </div>
+
+            <div class="features-grid">
+                <div class="feature-box">
+                    <h4>Непревзойденная надежность</h4>
+                    <p>Проверенные конструктивные решения, долговечные атмосферные моторы и выносливая подвеска.</p>
+                </div>
+                <div class="feature-box">
+                    <h4>Ликвидность на вторичном рынке</h4>
+                    <p>Corolla медленнее конкурентов теряет в цене и традиционно быстро находит новых владельцев.</p>
+                </div>
+                <div class="feature-box">
+                    <h4>Экономичность</h4>
+                    <p>Низкий расход топлива, недорогие расходные материалы и простота обслуживания в любом сервисе.</p>
+                </div>
+                <div class="feature-box">
+                    <h4>Безопасность</h4>
+                    <p>Высокие баллы в тестах Euro NCAP и комплекс электронных помощников Toyota Safety Sense уже в базе.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Подвал сайта -->
+    <footer>
+        <p>© 2026 Информационный гид по модели Toyota Corolla. Сделано для ознакомления.</p>
+    </footer>
+
+</body>
+</html>
